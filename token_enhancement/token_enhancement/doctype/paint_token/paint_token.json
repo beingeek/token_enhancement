@@ -1,0 +1,156 @@
+{
+ "autoname": "format:{YYYY}-{production_batch}-{#####} ",
+ "creation": "2023-02-07 09:47:21.838486",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "token_key",
+  "token_key_qr",
+  "token_tracer",
+  "token_tracer_qr",
+  "token_value",
+  "production_batch",
+  "is_redeemed",
+  "is_issued",
+  "column_break_4",
+  "notes",
+  "column_break_6",
+  "creation_date",
+  "created_by",
+  "issued_by",
+  "issued_to"
+ ],
+ "fields": [
+  {
+   "fieldname": "token_key",
+   "fieldtype": "Data",
+   "label": "Token Key",
+   "read_only": 1
+  },
+  {
+   "fieldname": "token_tracer",
+   "fieldtype": "Data",
+   "label": "Token Tracer",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "token_value",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Token Value",
+   "options": "\n50\n300\n400\n1200",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "production_batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Production Batch",
+   "options": "Batch",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "creation_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Creation Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "issued_by",
+   "fieldtype": "Link",
+   "label": "Issued By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes",
+   "read_only": 1
+  },
+  {
+   "fieldname": "issued_to",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Issued To",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_redeemed",
+   "fieldtype": "Check",
+   "label": "Is Redeemed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_issued",
+   "fieldtype": "Check",
+   "label": "Is Issued",
+   "read_only": 1
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "token_key_qr",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Token Key QR",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "token_tracer_qr",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Token Tracer QR",
+   "no_copy": 1,
+   "read_only": 1
+  }
+ ],
+ "in_create": 1,
+ "modified": "2023-02-09 22:41:30.254104",
+ "modified_by": "Administrator",
+ "module": "Token Enhancement",
+ "name": "Paint Token",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

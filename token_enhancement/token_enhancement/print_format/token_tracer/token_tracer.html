@@ -1,0 +1,58 @@
+{%- if doc.token_value == '50'  -%}
+{%- set bkg_color = '#8db380' -%}
+{%- elif doc.token_value == '300'  -%}
+{%- set bkg_color = '#ebd300' -%}
+{%- elif doc.token_value == '400'  -%}
+{%- set bkg_color = '#d30077' -%}
+{%- elif doc.token_value == '1200'  -%}
+{%- set bkg_color = '#0194c8' -%}
+{% endif %}
+
+<style>
+@media screen , print {
+    .print-format {
+		background-color: {{ bkg_color }};
+        width: 2in;
+        padding: 0.1in 0.5in 0.2in;
+        min-height: 2.5in;
+	}
+    .token-body {
+        text-align: center;
+        padding-top: 0.1in;
+        margin-left: -0.2in;
+        width: 1.4in;
+        height: 1.4in;
+    }
+    .token-value, .token-qr {
+        background-color: white;
+    }
+    .token-value {
+        margin-top: 0.1in;
+    }
+}
+
+@media screen {
+	.print-format {
+        min-height: 2.5in;
+	}
+}
+
+@media print {
+	.print-format {
+        height: 2.5in;
+	}
+}
+</style>
+<div class="page-break">
+    {% if letter_head  %}
+        <div class="letter-head center-block" >{{ letter_head }}</div>
+    {% endif %}
+
+    <div class="token-body" >
+        <div class="token-qr"><img src="{{ doc.token_tracer_qr }}" ></div>
+        <div class="token-value"><p>{{ doc.token_value }} Points</p></div>
+    </div>
+
+
+</div>
+
