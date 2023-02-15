@@ -3,6 +3,7 @@
 # For license information, please see license.txt
 
 from __future__ import unicode_literals
+from frappe import _
 import frappe
 from frappe.model.document import Document
 import io
@@ -20,8 +21,12 @@ class PaintToken(Document):
 		qr_code_generator(self, 'token_tracer')
 
 	def validate_token_value(self):
-		#not other then is select dropdown
-		pass
+		token_values = self.meta.get_options("token_value").split('\n')
+		token_values = [d for d in token_values if d]
+		if self.token_value not in token_values:
+			frappe.throw(_('Invalid Token Value'))
+
+
 
 	def generate_token_key(self):
 		return frappe.generate_hash(length=10)
