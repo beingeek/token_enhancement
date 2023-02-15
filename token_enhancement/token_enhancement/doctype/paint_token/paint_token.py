@@ -31,6 +31,26 @@ class PaintToken(Document):
 	def generate_token_key(self):
 		return frappe.generate_hash(length=10)
 
+	def update_token(self, issue_token, is_issued=0, update=False, update_modified=False):
+		if issue_token:
+			if is_issued:
+				self.is_issued = is_issued
+				self.issued_to = issue_token.customer
+				self.issue_date = issue_token.issue_date
+				self.issued_by = issue_token.issued_by
+
+			elif not is_issued:
+				self.is_issued = is_issued
+				self.issued_to = None
+				self.issue_date = None
+				self.issued_by = None
+
+		if update:
+			self.db_set('is_issued', self.is_issued, update_modified=update_modified)
+			self.db_set('issued_to', self.issued_to, update_modified=update_modified)
+			self.db_set('issue_date', self.issue_date, update_modified=update_modified)
+			self.db_set('issued_by', self.issued_by, update_modified=update_modified)
+
 
 def qr_code_generator(doc, qr_field):
 	qr_field_value = doc.get(qr_field)
