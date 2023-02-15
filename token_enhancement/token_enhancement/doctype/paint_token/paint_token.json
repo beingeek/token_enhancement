@@ -18,6 +18,7 @@
   "column_break_6",
   "creation_date",
   "created_by",
+  "issue_date",
   "issued_by",
   "issued_to"
  ],
@@ -116,7 +117,6 @@
   {
    "fieldname": "token_key_qr",
    "fieldtype": "Attach Image",
-   "hidden": 1,
    "label": "Token Key QR",
    "no_copy": 1,
    "read_only": 1
@@ -124,14 +124,19 @@
   {
    "fieldname": "token_tracer_qr",
    "fieldtype": "Attach Image",
-   "hidden": 1,
    "label": "Token Tracer QR",
    "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "issue_date",
+   "fieldtype": "Date",
+   "label": "Issue Date",
    "read_only": 1
   }
  ],
  "in_create": 1,
- "modified": "2023-02-09 22:41:30.254104",
+ "modified": "2023-02-15 16:00:30.050717",
  "modified_by": "Administrator",
  "module": "Token Enhancement",
  "name": "Paint Token",
