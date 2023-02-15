@@ -4,6 +4,7 @@ from frappe.utils import cint, cstr
 
 @frappe.whitelist()
 def generate_tokens(number_of_tokens, token_value,  production_batch, creation_date, created_by, notes=None):
+	token_list = []
 	for token_counter in range(cint(number_of_tokens)):
 		doc = frappe.new_doc('Paint Token')
 
@@ -14,5 +15,6 @@ def generate_tokens(number_of_tokens, token_value,  production_batch, creation_d
 		doc.created_by = created_by
 		doc.notes = notes
 		doc.token_tracer
-
 		doc.save()
+		token_list.append(doc)
+	return token_list

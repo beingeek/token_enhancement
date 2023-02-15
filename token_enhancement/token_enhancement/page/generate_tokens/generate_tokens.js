@@ -85,6 +85,7 @@ token_enhancement.GenerateTokensTool = class GenerateTokensTool {
 	}
 
 	generate_tokens() {
+		var me = this;
 		let { number_of_tokens, token_value, production_batch, creation_date, created_by, notes} = this.form.get_values();
 		if (number_of_tokens && token_value && production_batch && creation_date && created_by) {
 			frappe.call({
@@ -97,13 +98,16 @@ token_enhancement.GenerateTokensTool = class GenerateTokensTool {
 					created_by,
 					notes
 				},
-				callback: function(r, rt) {
+				callback: function(r) {
 					if(r.message) {
-						callback(r.message.account)
+						frappe.msgprint('Token Generated Successfully');
+						me.form.set_value('number_of_tokens', null);
+						me.form.set_value('token_value', null);
+						me.form.set_value('production_batch', null);
+						me.form.set_value('notes', null);
 					}
 				}
 			})
-			frappe.msgprint('Token Generated Successfully');
 		} else {
 			frappe.throw(__('Missing values'))
 		}
