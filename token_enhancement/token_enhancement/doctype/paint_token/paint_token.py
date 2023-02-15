@@ -43,7 +43,7 @@ def qr_code_generator(doc, qr_field):
 			"content": qr_image.getvalue(),
 			"attached_to_doctype": doc.get("doctype"),
 			"attached_to_name": doc.get("name"),
-			"attached_to_field": "ksa_einv_qr",
+			"attached_to_field": qr_field,
 		}
 	)
 	_file.save()
