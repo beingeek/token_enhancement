@@ -27,7 +27,8 @@
    "fieldname": "token_key",
    "fieldtype": "Data",
    "label": "Token Key",
-   "read_only": 1
+   "read_only": 1,
+   "unique": 1
   },
   {
    "fieldname": "token_tracer",
@@ -117,6 +118,7 @@
   {
    "fieldname": "token_key_qr",
    "fieldtype": "Attach Image",
+   "hidden": 1,
    "label": "Token Key QR",
    "no_copy": 1,
    "read_only": 1
@@ -124,6 +126,7 @@
   {
    "fieldname": "token_tracer_qr",
    "fieldtype": "Attach Image",
+   "hidden": 1,
    "label": "Token Tracer QR",
    "no_copy": 1,
    "read_only": 1
@@ -136,7 +139,7 @@
   }
  ],
  "in_create": 1,
- "modified": "2023-02-15 16:00:30.050717",
+ "modified": "2023-02-16 23:45:29.972949",
  "modified_by": "Administrator",
  "module": "Token Enhancement",
  "name": "Paint Token",
