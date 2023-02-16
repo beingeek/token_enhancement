@@ -105,6 +105,7 @@ token_enhancement.GenerateTokensTool = class GenerateTokensTool {
 						me.form.set_value('token_value', null);
 						me.form.set_value('production_batch', null);
 						me.form.set_value('notes', null);
+						frappe.set_route('List', 'Paint Token');
 					}
 				}
 			})
