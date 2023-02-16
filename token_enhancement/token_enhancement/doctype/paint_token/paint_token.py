@@ -8,7 +8,6 @@ import frappe
 from frappe.model.document import Document
 import io
 import os
-from base64 import b64encode
 from pyqrcode import create as qr_create
 
 class PaintToken(Document):
@@ -25,8 +24,6 @@ class PaintToken(Document):
 		token_values = [d for d in token_values if d]
 		if self.token_value not in token_values:
 			frappe.throw(_('Invalid Token Value'))
-
-
 
 	def generate_token_key(self):
 		return frappe.generate_hash(length=10)
