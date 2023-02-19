@@ -14,9 +14,6 @@ class PaintToken(Document):
 	def validate(self):
 		self.validate_token_value()
 
-	def on_update(self):
-		frappe.throw(_('Manual Changes not allowed'))
-
 	def after_insert(self):
 		self.db_set('token_tracer', self.name)
 		qr_code_generator(self, 'token_key')
