@@ -83,7 +83,7 @@ class OverridenPaymentEntry:
 			token = frappe.get_doc('Paint Token', d.token_tracer)
 			token.update_token(payment_entry=self, is_redeemed=is_redeemed, update=True, update_modified=True)
 			token.validate_unissued_redemption()
-			d.is_redeemed = is_redeemed
+			d.db_set('is_redeemed', is_redeemed)
 			token.notify_update()
 
 	def validate_payment_type(self):
