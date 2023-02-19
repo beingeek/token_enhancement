@@ -16,7 +16,28 @@ required_apps = ["erpnext"]
 fixtures = [
     {
         "doctype": "Property Setter",
-        "filters": [["name", "in", ("Payment Entry-payment_type-options")]],
+        "filters": [
+            [
+                "name", "in",
+                (
+                    "Payment Entry-payment_type-options", "Payment Entry-party_section-depends_on",
+                    "Payment Entry-party_type-depends_on", "Payment Entry-party-depends_on",
+                    "Payment Entry-party_name-depends_on", "Payment Entry-paid_from-depends_on",
+                    "Payment Entry-section_break_14-depends_on"
+                )
+            ]
+        ],
+    },
+    {
+        "doctype": "Custom Field",
+        "filters": [
+            [
+                "name", "in",
+                (
+                    "Payment Entry-token_references", "Payment Entry-token_reference"
+                )
+            ]
+        ],
     },
 ]
 
