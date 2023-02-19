@@ -21,6 +21,7 @@
    "fieldname": "customer",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Customer",
    "options": "Customer",
    "reqd": 1
@@ -33,6 +34,7 @@
    "fieldname": "issue_date",
    "fieldtype": "Date",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Issue Date",
    "read_only": 1,
    "reqd": 1
@@ -45,6 +47,7 @@
    "fieldname": "issued_by",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Issued By",
    "options": "User",
    "read_only": 1,
@@ -54,6 +57,7 @@
    "fieldname": "issue_tokens",
    "fieldtype": "Table",
    "label": "Issue Tokens",
+   "no_copy": 1,
    "options": "Token Tracer",
    "reqd": 1
   },
@@ -84,7 +88,7 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2023-02-16 23:35:26.856457",
+ "modified": "2023-02-17 08:05:39.540325",
  "modified_by": "Administrator",
  "module": "Token Enhancement",
  "name": "Issue Token Inventory",
@@ -120,6 +124,7 @@
   }
  ],
  "quick_entry": 1,
+ "search_fields": "customer, issued_by",
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1
