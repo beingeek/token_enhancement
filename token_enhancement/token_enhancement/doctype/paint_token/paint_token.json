@@ -11,17 +11,25 @@
   "token_tracer_qr",
   "token_value",
   "production_batch",
-  "is_redeemed",
-  "is_issued",
   "column_break_4",
   "company",
   "notes",
   "column_break_6",
   "creation_date",
   "created_by",
-  "issue_date",
+  "is_issued",
+  "is_redeemed",
+  "token_issue_details_section",
   "issued_by",
-  "issued_to"
+  "issued_to",
+  "column_break_22",
+  "issue_date",
+  "issue_token_document",
+  "token_redeem_details_section",
+  "redeemed_by",
+  "column_break_17",
+  "redeemed_date",
+  "redeem_payment_entry"
  ],
  "fields": [
   {
@@ -137,6 +145,7 @@
    "fieldtype": "Date",
    "label": "Issue Date",
    "read_only": 1
+  },
   {
    "fieldname": "company",
    "fieldtype": "Link",
@@ -144,10 +153,56 @@
    "options": "Company",
    "reqd": 1
   },
+  {
+   "fieldname": "issue_token_document",
+   "fieldtype": "Link",
+   "label": "Issue Token Document",
+   "options": "Issue Token Inventory",
+   "read_only": 1
+  },
+  {
+   "fieldname": "redeemed_by",
+   "fieldtype": "Link",
+   "label": "Redeemed By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "redeemed_date",
+   "fieldtype": "Data",
+   "label": "Redeemed Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "redeem_payment_entry",
+   "fieldtype": "Link",
+   "label": "Redeem Payment Entry",
+   "options": "Payment Entry",
+   "read_only": 1
+  },
+  {
+   "depends_on": "is_issued",
+   "fieldname": "token_issue_details_section",
+   "fieldtype": "Section Break",
+   "label": "Token Issue Details"
+  },
+  {
+   "fieldname": "column_break_22",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "is_redeemed",
+   "fieldname": "token_redeem_details_section",
+   "fieldtype": "Section Break",
+   "label": "Token redeem Details"
+  },
+  {
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break"
   }
  ],
  "in_create": 1,
- "modified": "2023-02-16 23:45:29.972949",
+ "modified": "2023-02-19 09:13:56.838729",
  "modified_by": "Administrator",
  "module": "Token Enhancement",
  "name": "Paint Token",
