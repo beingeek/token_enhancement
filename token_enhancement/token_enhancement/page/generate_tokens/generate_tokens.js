@@ -15,6 +15,7 @@ token_enhancement.GenerateTokensTool = class GenerateTokensTool {
 	constructor(page) {
 		this.page = page;
 		this.make_form();
+		this.hide_company(this.form);
 		this.prepare_actions();
 	}
 
@@ -43,6 +44,13 @@ token_enhancement.GenerateTokensTool = class GenerateTokensTool {
 				},
 				{
 					fieldtype: 'Column Break'
+				},
+				{
+					label: __('Company'),
+					fieldname: 'company',
+					fieldtype: 'Link',
+					options: 'Company',
+					reqd: 1
 				},
 				{
 					label: __('Notes'),
@@ -86,7 +94,8 @@ token_enhancement.GenerateTokensTool = class GenerateTokensTool {
 
 	generate_tokens() {
 		var me = this;
-		let { number_of_tokens, token_value, production_batch, creation_date, created_by, notes} = this.form.get_values();
+
+		let { number_of_tokens, token_value, production_batch, creation_date, created_by, company, notes} = this.form.get_values();
 		if (number_of_tokens && token_value && production_batch && creation_date && created_by) {
 			frappe.call({
 				method: "token_enhancement.token_enhancement.page.generate_tokens.generate_tokens.generate_tokens",
@@ -96,6 +105,7 @@ token_enhancement.GenerateTokensTool = class GenerateTokensTool {
 					production_batch,
 					creation_date,
 					created_by,
+					company,
 					notes
 				},
 				callback: function(r) {
@@ -111,6 +121,16 @@ token_enhancement.GenerateTokensTool = class GenerateTokensTool {
 			})
 		} else {
 			frappe.throw(__('Missing values'))
+		}
+	}
+
+	hide_company(frm) {
+		var companies = Object.keys(locals[":Company"] || {});
+		if(companies.length === 1) {
+			if(!frm.get_value('company')) frm.set_value("company", companies[0]);
+			frm.set_df_property('company', 'hidden', 1);
+		} else if(erpnext.last_selected_company) {
+			if(!frm.get_value('company')) frm.set_value("company", erpnext.last_selected_company);
 		}
 	}
 }

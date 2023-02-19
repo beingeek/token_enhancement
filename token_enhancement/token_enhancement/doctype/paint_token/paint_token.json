@@ -14,6 +14,7 @@
   "is_redeemed",
   "is_issued",
   "column_break_4",
+  "company",
   "notes",
   "column_break_6",
   "creation_date",
@@ -136,6 +137,13 @@
    "fieldtype": "Date",
    "label": "Issue Date",
    "read_only": 1
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
   }
  ],
  "in_create": 1,

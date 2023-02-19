@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Paint Token', {
-	// refresh: function(frm) {
-
-	// }
+	refresh: function(frm) {
+        erpnext.hide_company();
+	}
 });
