@@ -28,6 +28,15 @@ class PaintToken(Document):
 		if self.token_value not in token_values:
 			frappe.throw(_('Invalid Token Value'))
 
+
+	def validate_unissued_redemption(self):
+		if not (self.is_issued and self.issue_token_document) and self.is_redeemed:
+			frappe.throw(_('Cannot redeem unissued Token'))
+
+	def validate_redeemed_unissuance(self):
+		if self.is_redeemed and self.redeem_payment_entry and not self.is_issued:
+			frappe.throw(_('Cannot unissue redeemed {0} ').format(frappe.get_desk_link('Paint Token', self.name)))
+
 	def generate_token_key(self):
 		return frappe.generate_hash(length=10)
 
