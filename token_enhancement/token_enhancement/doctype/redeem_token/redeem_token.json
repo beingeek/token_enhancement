@@ -1,0 +1,67 @@
+{
+ "creation": "2023-02-17 08:14:33.598934",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "token_key",
+  "token_tracer",
+  "column_break_3",
+  "token_value",
+  "is_issued",
+  "is_redeemed"
+ ],
+ "fields": [
+  {
+   "fieldname": "token_tracer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Token Tracer",
+   "options": "Paint Token",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "token_value",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Token Value",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_issued",
+   "fieldtype": "Check",
+   "label": "Is Issued",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "is_redeemed",
+   "fieldtype": "Check",
+   "label": "Is Redeemed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "token_key",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Token Key"
+  }
+ ],
+ "istable": 1,
+ "modified": "2023-02-18 23:10:00.006463",
+ "modified_by": "Administrator",
+ "module": "Token Enhancement",
+ "name": "Redeem Token",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
