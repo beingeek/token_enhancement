@@ -12,6 +12,39 @@ app_email = "furqan@createch.solutions"
 app_license = "MIT"
 
 required_apps = ["erpnext"]
+
+fixtures = [
+    {
+        "doctype": "Property Setter",
+        "filters": [["name", "in", ("Payment Entry-payment_type-options")]],
+    },
+]
+
+doctype_js = {
+    "Payment Entry" : "overrides/payment_entry_override.js"
+}
+
+from erpnext.accounts.doctype.payment_entry.payment_entry import PaymentEntry as _PaymentEntry
+from token_enhancement.overrides.payment_entry_override import OverridenPaymentEntry as _OverridenPaymentEntry
+
+_PaymentEntry.setup_party_account_field = _OverridenPaymentEntry.setup_party_account_field
+_PaymentEntry.validate = _OverridenPaymentEntry.validate
+_PaymentEntry.on_submit = _OverridenPaymentEntry.on_submit
+_PaymentEntry.on_cancel = _OverridenPaymentEntry.on_cancel
+_PaymentEntry.redeem_token_update = _OverridenPaymentEntry.redeem_token_update
+_PaymentEntry.validate_payment_type = _OverridenPaymentEntry.validate_payment_type
+_PaymentEntry.validate_bank_accounts = _OverridenPaymentEntry.validate_bank_accounts
+_PaymentEntry.set_token_references = _OverridenPaymentEntry.set_token_references
+_PaymentEntry.validate_token_references = _OverridenPaymentEntry.validate_token_references
+_PaymentEntry.validate_allocated_amount_for_tokens = _OverridenPaymentEntry.validate_allocated_amount_for_tokens
+_PaymentEntry.set_amounts_for_tokens = _OverridenPaymentEntry.set_amounts_for_tokens
+_PaymentEntry.set_total_allocated_amount_tokens = _OverridenPaymentEntry.set_total_allocated_amount_tokens
+_PaymentEntry.set_difference_amount = _OverridenPaymentEntry.set_difference_amount
+_PaymentEntry.set_title = _OverridenPaymentEntry.set_title
+_PaymentEntry.set_remarks_token_pe = _OverridenPaymentEntry.set_remarks_token_pe
+_PaymentEntry.add_party_gl_entries = _OverridenPaymentEntry.add_party_gl_entries
+_PaymentEntry.add_bank_gl_entries = _OverridenPaymentEntry.add_bank_gl_entries
+
 # Includes in <head>
 # ------------------
 
