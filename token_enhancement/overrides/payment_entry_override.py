@@ -33,6 +33,7 @@ class OverridenPaymentEntry:
 		if self.payment_type == 'Token Payment Entry':
 			self.set_token_references()
 			self.validate_token_references()
+			self.validate_duplicate_token_entries()
 			self.set_amounts_for_tokens()
 			self.set_title()
 			self.validate_allocated_amount_for_tokens()
@@ -114,6 +115,16 @@ class OverridenPaymentEntry:
 				frappe.throw(_('Row# {0} Token {1} not yet issued').format(d.idx, d.token_key))
 			if token_data.is_redeemed:
 				frappe.throw(_('Row# {0} Token {1} already redeemed').format(d.idx, d.token_key))
+			if self.party != token_data.issued_to:
+				frappe.throw(_('Row# {0} Token {1} was not issued to {2}').format(d.idx, d.token_key, frappe.get_desk_link('Customer', self.party)))
+
+	def validate_duplicate_token_entries(self):
+		reference_names = []
+		for d in self.get("token_references"):
+			if (d.token_key) in reference_names:
+				frappe.throw(_("Row #{0}: Duplicate entry in Token {1}")
+					.format(d.idx, d.token_key))
+			reference_names.append((d.token_key))
 
 	def validate_allocated_amount_for_tokens(self):
 		if self.paid_amount != self.total_allocated_amount:
