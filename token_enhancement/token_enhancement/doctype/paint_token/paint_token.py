@@ -101,3 +101,14 @@ def qr_code_generator(doc, qr_field):
 	_file.save()
 	doc.db_set("{0}_qr".format(qr_field), _file.file_url)
 	doc.notify_update()
+
+@frappe.whitelist()
+def get_token_data(token_key):
+	if not token_key:
+		frappe.throw(_('Token key Mandatory'))
+
+	if not frappe.db.exists('Paint Token', {'token_key': token_key}):
+		frappe.throw(_('Invalid Token Key {0}').format(token_key))
+
+	paint_token = frappe.get_doc('Paint Token', {'token_key': token_key})
+	return paint_token
