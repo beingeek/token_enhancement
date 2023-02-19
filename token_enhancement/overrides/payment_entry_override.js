@@ -1,22 +1,34 @@
 frappe.ui.form.on('Payment Entry', {
 	onload: function(frm) {
-		frm.events.hide_unhide_fields(frm);
+		frm.events.hide_unhide_fields_and_set_query(frm);
 	},
 
 	payment_type: function(frm) {
-		frm.events.hide_unhide_fields(frm);
+		frm.events.hide_unhide_fields_and_set_query(frm);
 	},
 
-	hide_unhide_fields: function(frm) {
+	hide_unhide_fields_and_set_query: function(frm) {
+		let party_type_filter;
 		if (frm.doc.payment_type == 'Token Payment Entry') {
 			frm.set_df_property('unallocated_amount', 'hidden', 1);
 			frm.set_df_property('difference_amount', 'hidden', 1);
 			frm.set_df_property('deductions_or_loss_section', 'hidden', 1);
+			party_type_filter = 'Customer';
 		} else {
 			frm.set_df_property('unallocated_amount', 'hidden', 0);
 			frm.set_df_property('difference_amount', 'hidden', 0);
 			frm.set_df_property('deductions_or_loss_section', 'hidden', 0);
+			party_type_filter = Object.keys(frappe.boot.party_account_types);
 		}
+
+		frm.set_query("party_type", function() {
+			frm.events.validate_company(frm);
+			return{
+				filters: {
+					"name": ["in", party_type_filter],
+				}
+			}
+		});
 	}
 });
 
