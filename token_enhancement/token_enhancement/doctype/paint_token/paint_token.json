@@ -97,6 +97,7 @@
    "default": "0",
    "fieldname": "is_redeemed",
    "fieldtype": "Check",
+   "in_standard_filter": 1,
    "label": "Is Redeemed",
    "read_only": 1
   },
@@ -112,6 +113,7 @@
    "default": "0",
    "fieldname": "is_issued",
    "fieldtype": "Check",
+   "in_standard_filter": 1,
    "label": "Is Issued",
    "read_only": 1
   },
@@ -143,6 +145,7 @@
   {
    "fieldname": "issue_date",
    "fieldtype": "Date",
+   "in_standard_filter": 1,
    "label": "Issue Date",
    "read_only": 1
   },
@@ -202,7 +205,7 @@
   }
  ],
  "in_create": 1,
- "modified": "2023-02-19 09:13:56.838729",
+ "modified": "2023-02-19 12:20:44.654482",
  "modified_by": "Administrator",
  "module": "Token Enhancement",
  "name": "Paint Token",
@@ -233,6 +236,7 @@
    "write": 1
   }
  ],
+ "search_fields": "issued_to, issue_date, is_issued, is_redeemed",
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1
