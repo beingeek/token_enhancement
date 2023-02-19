@@ -11,6 +11,7 @@ from frappe.model.document import Document
 class IssueTokenInventory(Document):
 	def validate(self):
 		self.validate_tokens()
+		self.validate_duplicate_token_entries()
 
 	def on_submit(self):
 		self.issue_token_update(is_issued=1)
@@ -41,3 +42,11 @@ class IssueTokenInventory(Document):
 					_('Row# {0}, {1} Redeemed')
 					.format(d.idx, frappe.get_desk_link('Paint Token', d.token_tracer))
 				)
+
+	def validate_duplicate_token_entries(self):
+		reference_names = []
+		for d in self.issue_tokens:
+			if (d.token_tracer) in reference_names:
+				frappe.throw(_("Row #{0}: Duplicate entry in Token {1}")
+					.format(d.idx, d.token_tracer))
+			reference_names.append((d.token_tracer))
