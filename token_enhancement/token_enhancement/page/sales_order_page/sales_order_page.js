@@ -133,6 +133,8 @@ token_enhancement.SalesOrderPage = class GenerateTokensTool {
 					delivery_date,
 					item_table,
 				},
+				freeze: true,
+				freeze_message: __("Creating Sales Order......"),
 				callback: function(r) {
 					if(r.message) {
 						frappe.msgprint('Sales Order Created Successfully');
