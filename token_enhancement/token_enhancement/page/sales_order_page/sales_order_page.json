@@ -1,0 +1,18 @@
+{
+ "content": null,
+ "creation": "2023-02-24 09:04:01.706038",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2023-02-24 09:04:01.706038",
+ "modified_by": "Administrator",
+ "module": "Token Enhancement",
+ "name": "sales-order-page",
+ "owner": "Administrator",
+ "page_name": "Sales Order Page",
+ "roles": [],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 1
+}

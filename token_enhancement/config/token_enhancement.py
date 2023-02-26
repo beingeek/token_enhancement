@@ -35,6 +35,12 @@ def get_data():
 					"description": _("Payment Entry"),
 					"dependencies": ["Paint Token", "Customer"],
 				},
+				{
+					"type": "page",
+					"name": "sales-order-page",
+					"label": _("Create Order"),
+					"dependencies": ["Paint Token", "Item"],
+				},
 			]
 		},
 	]
