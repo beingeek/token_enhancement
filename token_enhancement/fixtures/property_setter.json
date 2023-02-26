@@ -94,5 +94,21 @@
   "property": "depends_on",
   "property_type": "Data",
   "value": "eval:(in_list([\"Internal Transfer\", \"Pay\", \"Token Payment Entry\"], doc.payment_type) || doc.party)"
+ },
+ {
+  "default_value": null,
+  "doc_type": "Payment Entry",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "section_break_14",
+  "modified": "2023-02-17 08:17:50.369783",
+  "name": "Payment Entry-section_break_14-depends_on",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "property": "depends_on",
+  "property_type": "Data",
+  "value": "eval:(doc.party && doc.paid_from && doc.paid_to && doc.paid_amount && doc.received_amount && doc.payment_type != \"Token Payment Entry\")"
  }
 ]
