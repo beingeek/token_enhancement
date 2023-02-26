@@ -15,7 +15,6 @@ def generate_tokens(number_of_tokens, token_value,  production_batch, creation_d
 		doc.created_by = created_by
 		doc.notes = notes
 		doc.company = company
-		doc.token_tracer
 		doc.save()
 		token_list.append(doc)
 	return token_list
