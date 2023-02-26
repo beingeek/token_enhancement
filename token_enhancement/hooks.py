@@ -42,7 +42,8 @@ fixtures = [
 ]
 
 doctype_js = {
-    "Payment Entry" : "overrides/payment_entry_override.js"
+    "Payment Entry" : "overrides/payment_entry_override.js",
+    "Item" : "overrides/item_override.js"
 }
 
 from erpnext.accounts.doctype.payment_entry.payment_entry import PaymentEntry as _PaymentEntry
