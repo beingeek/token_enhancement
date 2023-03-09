@@ -35,7 +35,8 @@ fixtures = [
                 "name", "in",
                 (
                     "Payment Entry-token_references", "Payment Entry-token_reference",
-                    "Item-paint_uom", "UOM-is_paint_uom"
+                    "Item-paint_uom", "UOM-is_paint_uom",
+                    "Delivery Note-issue_tokens", "Delivery Note-tokens"
                 )
             ]
         ],
