@@ -82,7 +82,7 @@ class OverridenPaymentEntry:
 		# self.redeemed_by = payment_entry.owner
 		# self.redeemed_date = payment_entry.creation
 		# self.redeem_payment_entry = payment_entry.name
-		payment_entry = { 'redeemed_by': self.owner, 'redeemed_date': self.creation, 'redeem_payment_entry': self.name }
+		payment_entry = frappe._dict({ 'redeemed_by': self.owner, 'redeemed_date': self.creation, 'redeem_payment_entry': self.name })
 
 		for d in self.get("token_references"):
 			token = frappe.get_doc('Paint Token', d.token_tracer)
