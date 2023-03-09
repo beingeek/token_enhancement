@@ -79,9 +79,14 @@ class OverridenPaymentEntry:
 		self.set_status(update=True)
 
 	def redeem_token_update(self, is_redeemed):
+		# self.redeemed_by = payment_entry.owner
+		# self.redeemed_date = payment_entry.creation
+		# self.redeem_payment_entry = payment_entry.name
+		payment_entry = { 'redeemed_by': self.owner, 'redeemed_date': self.creation, 'redeem_payment_entry': self.name }
+
 		for d in self.get("token_references"):
 			token = frappe.get_doc('Paint Token', d.token_tracer)
-			token.update_token(payment_entry=self, is_redeemed=is_redeemed, update=True, update_modified=True)
+			token.update_token(payment_entry=payment_entry, is_redeemed=is_redeemed, update=True, update_modified=True)
 			token.validate_unissued_redemption()
 			d.db_set('is_redeemed', is_redeemed)
 			token.notify_update()

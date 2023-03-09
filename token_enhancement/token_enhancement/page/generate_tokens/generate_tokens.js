@@ -36,10 +36,10 @@ token_enhancement.GenerateTokensTool = class GenerateTokensTool {
 					reqd: 1,
 				},
 				{
-					label: __('Production Batch'),
-					fieldname: 'production_batch',
+					label: __('Work Order'),
+					fieldname: 'work_order',
 					fieldtype: 'Link',
-					options: 'Batch',
+					options: 'Work Order',
 					reqd: 1,
 				},
 				{
@@ -95,14 +95,14 @@ token_enhancement.GenerateTokensTool = class GenerateTokensTool {
 	generate_tokens() {
 		var me = this;
 
-		let { number_of_tokens, token_value, production_batch, creation_date, created_by, company, notes} = this.form.get_values();
-		if (number_of_tokens && token_value && production_batch && creation_date && created_by) {
+		let { number_of_tokens, token_value, work_order, creation_date, created_by, company, notes} = this.form.get_values();
+		if (number_of_tokens && token_value && work_order && creation_date && created_by) {
 			frappe.call({
 				method: "token_enhancement.token_enhancement.page.generate_tokens.generate_tokens.generate_tokens",
 				args: {
 					number_of_tokens,
 					token_value,
-					production_batch,
+					work_order,
 					creation_date,
 					created_by,
 					company,
@@ -113,7 +113,7 @@ token_enhancement.GenerateTokensTool = class GenerateTokensTool {
 						frappe.msgprint('Token Generated Successfully');
 						me.form.set_value('number_of_tokens', null);
 						me.form.set_value('token_value', null);
-						me.form.set_value('production_batch', null);
+						me.form.set_value('work_order', null);
 						me.form.set_value('notes', null);
 						frappe.set_route('List', 'Paint Token');
 					}

@@ -1,5 +1,5 @@
 {
- "autoname": "format:{YYYY}-{production_batch}-{#####} ",
+ "autoname": "format:{YYYY}-{work_order}-{#####} ",
  "creation": "2023-02-07 09:47:21.838486",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -11,6 +11,7 @@
   "token_tracer_qr",
   "token_value",
   "production_batch",
+  "work_order",
   "column_break_4",
   "company",
   "notes",
@@ -24,6 +25,7 @@
   "issued_to",
   "column_break_22",
   "issue_date",
+  "issue_doctype",
   "issue_token_document",
   "token_redeem_details_section",
   "redeemed_by",
@@ -61,8 +63,7 @@
    "in_list_view": 1,
    "label": "Production Batch",
    "options": "Batch",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "creation_date",
@@ -158,9 +159,9 @@
   },
   {
    "fieldname": "issue_token_document",
-   "fieldtype": "Link",
+   "fieldtype": "Dynamic Link",
    "label": "Issue Token Document",
-   "options": "Issue Token Inventory",
+   "options": "issue_doctype",
    "read_only": 1
   },
   {
@@ -202,10 +203,27 @@
   {
    "fieldname": "column_break_17",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "work_order",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Work Order",
+   "options": "Work Order",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "issue_doctype",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Issue Document",
+   "options": "DocType",
+   "read_only": 1
   }
  ],
  "in_create": 1,
- "modified": "2023-02-19 12:20:44.654482",
+ "modified": "2023-03-09 12:45:24.190319",
  "modified_by": "Administrator",
  "module": "Token Enhancement",
  "name": "Paint Token",

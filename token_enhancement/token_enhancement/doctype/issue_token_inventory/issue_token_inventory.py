@@ -20,13 +20,16 @@ class IssueTokenInventory(Document):
 		self.issue_token_update(is_issued=0)
 
 	def issue_token_update(self, is_issued):
-
+		token = frappe._dict({
+			'issued_to': self.customer, 'issue_date': self.issue_date, 'issued_by': self.issued_by,
+			'issue_doctype': self.doctype, 'issue_token_document': self.name
+		})
 		for d in self.issue_tokens:
-			token = frappe.get_doc('Paint Token', d.token_tracer)
-			token.update_token(issue_token=self, is_issued=is_issued, update=True, update_modified=True)
-			token.validate_redeemed_unissuance()
+			paint_token = frappe.get_doc('Paint Token', d.token_tracer)
+			paint_token.update_token(issue_token=token, is_issued=is_issued, update=True, update_modified=True)
+			paint_token.validate_redeemed_unissuance()
 			d.db_set('is_issued', is_issued)
-			token.notify_update()
+			paint_token.notify_update()
 
 	def validate_tokens(self):
 		for d in self.issue_tokens:

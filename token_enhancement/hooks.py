@@ -44,6 +44,7 @@ fixtures = [
 
 doctype_js = {
     "Payment Entry" : "overrides/payment_entry_override.js",
+    "Delivery Note" : "overrides/delivery_note_override.js",
     "Item" : "overrides/item_override.js"
 }
 
@@ -68,6 +69,16 @@ _PaymentEntry.set_title = _OverridenPaymentEntry.set_title
 _PaymentEntry.set_remarks_token_pe = _OverridenPaymentEntry.set_remarks_token_pe
 _PaymentEntry.add_party_gl_entries = _OverridenPaymentEntry.add_party_gl_entries
 _PaymentEntry.add_bank_gl_entries = _OverridenPaymentEntry.add_bank_gl_entries
+
+from erpnext.stock.doctype.delivery_note.delivery_note import DeliveryNote as _DeliveryNote
+from token_enhancement.overrides.delivery_note_override import OverriddenDeliveryNote as _OverriddenDeliveryNote
+
+_DeliveryNote.validate_tokens = _OverriddenDeliveryNote.validate_tokens
+_DeliveryNote.validate_duplicate_token_entries = _OverriddenDeliveryNote.validate_duplicate_token_entries
+_DeliveryNote.issue_token_update = _OverriddenDeliveryNote.issue_token_update
+_DeliveryNote.validate = _OverriddenDeliveryNote.validate
+_DeliveryNote.on_submit = _OverriddenDeliveryNote.on_submit
+_DeliveryNote.on_cancel = _OverriddenDeliveryNote.on_cancel
 
 # Includes in <head>
 # ------------------

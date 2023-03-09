@@ -40,22 +40,24 @@ class PaintToken(Document):
 	def update_token(self, issue_token=None, is_issued=0, payment_entry=None, is_redeemed=0, update=False, update_modified=False):
 		if issue_token:
 			if is_issued:
-				self.issued_to = issue_token.customer
+				self.issued_to = issue_token.issued_to
 				self.issue_date = issue_token.issue_date
 				self.issued_by = issue_token.issued_by
-				self.issue_token_document = issue_token.name
+				self.issue_doctype = issue_token.issue_doctype
+				self.issue_token_document = issue_token.issue_token_document
 
 			elif not is_issued:
 				self.issued_to = None
 				self.issue_date = None
 				self.issued_by = None
+				self.issue_doctype = None
 				self.issue_token_document = None
 
 		if payment_entry:
 			if is_redeemed:
-				self.redeemed_by = payment_entry.owner
-				self.redeemed_date = payment_entry.creation
-				self.redeem_payment_entry = payment_entry.name
+				self.redeemed_by = payment_entry.redeemed_by
+				self.redeemed_date = payment_entry.redeemed_date
+				self.redeem_payment_entry = payment_entry.redeem_payment_entry
 
 			elif not is_redeemed:
 				self.redeemed_by = None
@@ -68,13 +70,14 @@ class PaintToken(Document):
 				self.db_set('issued_to', self.issued_to, update_modified=update_modified)
 				self.db_set('issue_date', self.issue_date, update_modified=update_modified)
 				self.db_set('issued_by', self.issued_by, update_modified=update_modified)
+				self.db_set('issue_doctype', self.issue_doctype, update_modified=update_modified)
 				self.db_set('issue_token_document', self.issue_token_document, update_modified=update_modified)
 
-		if payment_entry:
-			self.db_set('is_redeemed', is_redeemed, update_modified=update_modified)
-			self.db_set('redeemed_by', self.redeemed_by, update_modified=update_modified)
-			self.db_set('redeemed_date', self.redeemed_date, update_modified=update_modified)
-			self.db_set('redeem_payment_entry', self.redeem_payment_entry, update_modified=update_modified)
+			if payment_entry:
+				self.db_set('is_redeemed', is_redeemed, update_modified=update_modified)
+				self.db_set('redeemed_by', self.redeemed_by, update_modified=update_modified)
+				self.db_set('redeemed_date', self.redeemed_date, update_modified=update_modified)
+				self.db_set('redeem_payment_entry', self.redeem_payment_entry, update_modified=update_modified)
 
 def qr_code_generator(doc, qr_field):
 	qr_field_value = doc.get(qr_field)
