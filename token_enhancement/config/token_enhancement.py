@@ -25,7 +25,7 @@ def get_data():
 				},
 				{
 					"type": "doctype",
-					"name": "Issue Token Inventory",
+					"name": "Delivery Note",
 					"description": _("Issue Token Inventory"),
 					"dependencies": ["Paint Token", "Customer"],
 				},
