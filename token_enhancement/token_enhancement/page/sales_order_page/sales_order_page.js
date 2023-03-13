@@ -6,7 +6,6 @@ frappe.pages['sales-order-page'].on_page_load = function(wrapper) {
 		title: 'Order Form',
 		single_column: true
 	});
-
 	new token_enhancement.SalesOrderPage(page);
 }
 
@@ -114,8 +113,6 @@ token_enhancement.SalesOrderPage = class GenerateTokensTool {
 		var me = this;
 		var item_to_order_area = $('<div style="min-height: 300px">').appendTo(me.form.fields_dict.item_table_html.wrapper);
 		me.item_to_order_area = new token_enhancement.ItemToOrderEditor(item_to_order_area, me);
-
-		// me.item_to_order_area.show();
 	}
 
 	create_sales_order() {
@@ -144,7 +141,6 @@ token_enhancement.SalesOrderPage = class GenerateTokensTool {
 						me.form.set_value('delivery_date', null);
 						me.form.fields_dict.item_table.df.data = [];
 						me.form.fields_dict.item_table.grid.refresh();
-						// frappe.set_route('List', 'Sales Order');
 					}
 				}
 			})
