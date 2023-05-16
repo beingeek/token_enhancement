@@ -14,6 +14,12 @@ def get_data():
 					"label": _("Generate Tokens"),
 				},
 				{
+					"type": "page",
+					"name": "paint-token-print",
+					"label": _("Print Tokens"),
+					"dependencies": ["Paint Token"],
+				},
+				{
 					"type": "doctype",
 					"name": "Customer",
 					"description": _("Customer")
