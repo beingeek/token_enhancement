@@ -29,7 +29,7 @@ token_enhancement.PrintTokens = class PrintTokens {
 					fieldname: 'paint_token',
 					fieldtype: 'HTML',
 					read_only: 1,
-					options: '<h2>heyi</h2>'
+					options: ''
 				},
 				{
 					fieldtype: 'Section Break'
